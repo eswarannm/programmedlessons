@@ -1,6 +1,6 @@
 import java.io.* ;
 
-public class ColumnSums
+class ColumnSums
 {
 
   public static void main ( String[] args ) 
@@ -10,24 +10,26 @@ public class ColumnSums
                      {9, 1, 0, 2},
                      {0, 2, 6, 3, -1, -8} };
     
-    // declare the sum
-    int[] rowSum = new int[data.length];
-    
-    // compute the sums for each row
+    int max = data[0].length;
+
+    for (int row=0; row < data.length; row++) {
+      if (data[row].length > max) {max = data[row].length;}
+    }
+
+    int[] ColSums = new int[max];
+
     for ( int row=0; row < data.length; row++)
     {
-      // initialize the sum
-      rowSum[row] = 0;
-      
-      // compute the sum for this row
       for ( int col=0; col < data[row].length; col++) 
       {
-         rowSum[row] += data[row][col];
+        ColSums[col] += data[row][col];
       }
-      
-      // write the sum for this row
-      System.out.println(rowSum[row]);
     }
-      
+
+    for (int row=0; row < ColSums.length; row++) {
+      System.out.println("Sum for the column: " + ColSums[row]);
+    }
+
   }
+      
 }
